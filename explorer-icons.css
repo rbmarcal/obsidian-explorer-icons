@@ -1,0 +1,125 @@
+/* =======================================================================
+   Obsidian File Explorer Icons
+   Monochrome SVG icons rendered via mask-image so they follow the
+   theme's text color. Built entirely with CSS snippets, with no
+   plugin-related overhead to keep resource usage to a minimum.
+
+   Author: Roberto Marçal (https://github.com/rbmarcal)
+
+   ======================================================================= */
+
+.workspace-leaf-content[data-type="file-explorer"] .nav-file-title,
+.workspace-leaf-content[data-type="file-explorer"] .nav-folder-title {
+    font-size: 13.5px;
+    color: var(--text-normal);
+}
+
+.is-mobile .workspace-leaf-content[data-type="file-explorer"] .nav-file-title,
+.is-mobile
+    .workspace-leaf-content[data-type="file-explorer"]
+    .nav-folder-title {
+    font-size: 16px;
+}
+
+/* ---- Shared styling for every icon ---- */
+.nav-folder-title-content::before,
+.nav-file-title-content::before {
+    content: "";
+    display: inline-block;
+    height: 1.1em;
+    vertical-align: -0.2em;
+    background-color: currentColor;
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    color: var(--text-muted);
+}
+
+/* ---- Shared styling for folders ---- */
+.nav-folder-title-content::before {
+    width: 1.1em;
+    margin-right: 0.3em;
+}
+
+/* ---- Folder icon when closed ---- */
+.nav-folder.is-collapsed
+    > .nav-folder-title
+    > .nav-folder-title-content::before {
+    mask-image: var(
+        --nav-icon,
+        url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z'/><path d='M2 10h20'/></svg>")
+    );
+}
+
+/* ---- Folder icon when open ---- */
+.nav-folder:not(.is-collapsed)
+    > .nav-folder-title
+    > .nav-folder-title-content::before {
+    mask-image: var(
+        --nav-icon,
+        url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='m6 14 1.5-2.9A2 2 0 0 1 9.24 10H20a2 2 0 0 1 1.94 2.5l-1.54 6a2 2 0 0 1-1.95 1.5H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H18a2 2 0 0 1 2 2v2'/></svg>")
+    );
+}
+
+/* ---- Folders beginning with a space (to enforce sorting first) ---- */
+.nav-folder-title[data-path^=" "] .nav-folder-title-content::before {
+    margin-right: -0.01em;
+}
+
+.nav-folder-title[data-path="Home"] {
+    --nav-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' fill='black' viewBox='0 0 16 16'><path d='M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z'/></svg>");
+}
+
+.nav-folder-title[data-path$="Inbox"] {
+    --nav-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='22 12 16 12 14 15 10 15 8 12 2 12'/><path d='M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z'/></svg>");
+}
+
+/* ---- Shared styling for files ---- */
+.nav-file-title > .nav-file-title-content::before {
+    width: var(--nav-icon-w, 1.1em);
+    margin-right: calc(var(--nav-icon-w, 1.1em) * 0.3);
+    mask-image: var(
+        --nav-icon,
+        url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z'/><path d='M14 2v5a1 1 0 0 0 1 1h5'/></svg>")
+    );
+}
+
+.nav-file-title[data-path$=".base"] {
+    --nav-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><ellipse cx='12' cy='5' rx='9' ry='3'/><path d='M3 5V19A9 3 0 0 0 21 19V5'/><path d='M3 12A9 3 0 0 0 21 12'/></svg>");
+}
+
+.nav-file-title[data-path$=".canvas"] {
+    --nav-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M12 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7'/><path d='M18.375 2.625a1 1 0 0 1 3 3l-9.013 9.014a2 2 0 0 1-.853.505l-2.873.84a.5.5 0 0 1-.62-.62l.84-2.873a2 2 0 0 1 .506-.852z'/></svg>");
+}
+
+.nav-file-title[data-path$=".md"] {
+    --nav-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z'/><path d='M14 2v5a1 1 0 0 0 1 1h5'/><path d='M10 9H8'/><path d='M16 13H8'/><path d='M16 17H8'/></svg>");
+}
+
+.nav-file-title[data-path$=".pdf"] {
+    --nav-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z'/><path d='M14 2v5a1 1 0 0 0 1 1h5'/><path d='M10 9H8'/><path d='M16 13H8'/><path d='M16 17H8'/></svg>");
+}
+
+.nav-file-title[data-path="Dashboard.md"] {
+    --nav-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' fill='black' viewBox='0 0 16 16'><path d='M4 11a1 1 0 1 1 2 0v1a1 1 0 1 1-2 0zm6-4a1 1 0 1 1 2 0v5a1 1 0 1 1-2 0zM7 9a1 1 0 0 1 2 0v3a1 1 0 1 1-2 0z'/><path d='M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1z'/><path d='M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0z'/></svg>");
+}
+
+.nav-file-title[data-path$=".png"],
+.nav-file-title[data-path$=".jpg"],
+.nav-file-title[data-path$=".jpeg"],
+.nav-file-title[data-path$=".gif"],
+.nav-file-title[data-path$=".bmp"],
+.nav-file-title[data-path$=".heic"],
+.nav-file-title[data-path$=".svg"],
+.nav-file-title[data-path$=".webp"],
+.nav-file-title[data-path$=".avif"] {
+    --nav-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><rect width='18' height='18' x='3' y='3' rx='2' ry='2'/><circle cx='9' cy='9' r='2'/><path d='m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21'/></svg>");
+}
+
+.nav-file-title[data-path$=".mp4"],
+.nav-file-title[data-path$=".webm"],
+.nav-file-title[data-path$=".mkv"],
+.nav-file-title[data-path$=".mov"],
+.nav-file-title[data-path$=".ogv"] {
+    --nav-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><rect width='18' height='18' x='3' y='3' rx='2'/><path d='M7 3v18'/><path d='M3 7.5h4'/><path d='M3 12h18'/><path d='M3 16.5h4'/><path d='M17 3v18'/><path d='M17 7.5h4'/><path d='M17 16.5h4'/></svg>");
+}
